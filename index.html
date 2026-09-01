@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エコノミー発送まるわかりガイド</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<style>
+  :root{
+    --ground:#F6F7F5;
+    --surface:#FFFFFF;
+    --ink:#2E3A40;
+    --muted:#5C6B72;
+    --line:#DDE3E1;
+    --blue:#3A5A78;        /* CPaSS側 */
+    --blue-soft:#EDF2F7;
+    --red:#9C4A42;         /* 郵便側 */
+    --red-soft:#F8EFED;
+    --amber:#8A6A2F;       /* 注意・グレーゾーン */
+    --amber-soft:#F7F1E2;
+    --green:#3F6B52;       /* OK */
+    --green-soft:#EBF3EE;
+  }
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Noto Sans JP",-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;
+    font-size:18px;
+    line-height:1.95;
+    margin:0;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:48px 22px 80px;}
+  h1,h2,h3{font-family:"Zen Maru Gothic","Noto Sans JP",sans-serif;line-height:1.5;text-wrap:balance;}
+  h1{font-size:34px;margin:8px 0 10px;}
+  .lead{color:var(--muted);font-size:18px;margin:0 0 8px;}
+  .eyebrow{color:var(--blue);font-weight:700;letter-spacing:.14em;font-size:14px;}
+
+  .step{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:30px 30px 26px;
+    margin-top:30px;
+  }
+  .step-no{
+    display:inline-block;
+    background:var(--blue);
+    color:#fff;
+    font-family:"Zen Maru Gothic",sans-serif;
+    font-weight:700;
+    font-size:14px;
+    border-radius:999px;
+    padding:3px 16px;
+    letter-spacing:.08em;
+    margin-bottom:6px;
+  }
+  h2{font-size:25px;margin:6px 0 14px;}
+  h3{font-size:19px;margin:22px 0 8px;}
+  p{margin:10px 0;}
+  ul{margin:8px 0;padding-left:24px;}
+  li{margin:6px 0;}
+  strong{font-weight:700;}
+  .kotae{
+    background:var(--blue-soft);
+    border-radius:10px;
+    padding:14px 18px;
+    margin:14px 0 4px;
+    font-weight:500;
+  }
+
+  /* 比較カード */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 6px;}
+  @media(max-width:640px){.vs{grid-template-columns:1fr;}}
+  .card{border-radius:12px;padding:18px 20px;border:1px solid var(--line);}
+  .card.cpass{background:var(--blue-soft);}
+  .card.post{background:var(--red-soft);}
+  .card h3{margin:0 0 4px;font-size:19px;}
+  .card .sub{font-size:14px;color:var(--muted);margin:0 0 10px;}
+  .card ul{padding-left:20px;font-size:16.5px;line-height:1.85;}
+  .tag{display:inline-block;font-size:13px;font-weight:700;border-radius:6px;padding:1px 10px;margin-right:4px;}
+  .tag.b{background:var(--blue);color:#fff;}
+  .tag.r{background:var(--red);color:#fff;}
+
+  /* 表 */
+  .tablebox{overflow-x:auto;margin:14px 0;}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:16.5px;background:var(--surface);}
+  th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;vertical-align:top;line-height:1.7;}
+  th{background:#EFF2F0;font-weight:700;white-space:nowrap;}
+  td.head{background:#F6F8F7;font-weight:700;white-space:nowrap;}
+  tbody tr td:nth-child(2){background:#FBFCFE;}
+  tbody tr td:nth-child(3){background:#FDFAF9;}
+
+  /* 注意ボックス */
+  .note{
+    background:var(--amber-soft);
+    border:1px solid #E3D5B3;
+    border-radius:10px;
+    padding:14px 18px;
+    margin:16px 0;
+    font-size:16.5px;
+  }
+  .note .t{font-weight:700;color:var(--amber);}
+  .ok{
+    background:var(--green-soft);
+    border:1px solid #C9DCCF;
+    border-radius:10px;
+    padding:14px 18px;
+    margin:16px 0;
+    font-size:16.5px;
+  }
+  .ok .t{font-weight:700;color:var(--green);}
+
+  /* ルール強調 */
+  .rule{
+    text-align:center;
+    font-family:"Zen Maru Gothic",sans-serif;
+    font-weight:700;
+    font-size:21px;
+    background:var(--surface);
+    border:2px solid var(--blue);
+    color:var(--blue);
+    border-radius:12px;
+    padding:16px 20px;
+    margin:18px 0;
+  }
+  .yakusoku{margin:14px 0;display:grid;gap:12px;}
+  .yaku{border-radius:10px;padding:14px 18px;font-size:16.5px;border:1px solid var(--line);background:var(--surface);}
+  .yaku .head{font-weight:700;margin-bottom:2px;}
+
+  footer{color:var(--muted);font-size:14.5px;margin-top:40px;line-height:1.8;}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">eBay輸出 やさしい解説シリーズ</div>
+  <h1>エコノミー発送まるわかりガイド</h1>
+  <p class="lead">「エコノミーってなに？」「どっちで送ればいいの？」「関税はどうなるの？」<br>
+  この1枚で、順番に、ぜんぶ分かるように説明します。（アメリカ向けが中心です）</p>
+
+  <!-- STEP 1 -->
+  <section class="step">
+    <span class="step-no">ステップ 1</span>
+    <h2>エコノミー発送ってなに？</h2>
+    <p>エコノミー発送とは、<strong>「安いけれど、ゆっくり届く」発送方法</strong>のことです。</p>
+    <p>飛行機の「エコノミークラス」と同じイメージです。お金を節約できるかわりに、少し時間がかかります。軽くて安い商品を送るとき、送料を安くおさえるために使います。</p>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step">
+    <span class="step-no">ステップ 2</span>
+    <h2>エコノミーの発送方法は「2つ」ある</h2>
+    <p>ここが一番大事なところです。eBayのエコノミー発送には、<strong>2つの方法</strong>があります。</p>
+    <div class="vs">
+      <div class="card cpass">
+        <span class="tag b">方法A</span>
+        <h3>CPaSSエコノミー</h3>
+        <p class="sub">正式名：eBay SpeedPAK Economy</p>
+        <ul>
+          <li>eBay公式の発送ツール「CPaSS（シーパス）」で使えるエコノミー配送</li>
+        </ul>
+      </div>
+      <div class="card post">
+        <span class="tag r">方法B</span>
+        <h3>国際エアパケット</h3>
+        <p class="sub">日本郵便のサービス</p>
+        <ul>
+          <li>郵便局から送る方法（昔の「国際eパケットライト」が2026年6月に名前を変えたもの）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="kotae">まず「エコノミーには2つの方法がある」と知ること。これが第一歩です。</div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step">
+    <span class="step-no">ステップ 3</span>
+    <h2>2つのくらべっこ（メリット・デメリット）</h2>
+    <div class="tablebox">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>方法A：CPaSSエコノミー</th>
+            <th>方法B：国際エアパケット</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="head">お届け日数</td>
+            <td><strong>8〜12営業日</strong>（速い）</td>
+            <td><strong>11〜23営業日</strong>の枠で使う（ゆっくり）</td>
+          </tr>
+          <tr>
+            <td class="head">追跡</td>
+            <td>全行程あり（無料）</td>
+            <td>あり</td>
+          </tr>
+          <tr>
+            <td class="head">重さ・料金</td>
+            <td>料金表はCPaSS内で確認</td>
+            <td>2kgまで。アメリカ向け500gまで1,600円</td>
+          </tr>
+          <tr>
+            <td class="head">補償</td>
+            <td>紛失・破損時のお金の補償は公式に明記なし</td>
+            <td>補償なし（日本郵便が賠償するのは書留・保険付・国際小包・EMSのみのため）</td>
+          </tr>
+          <tr>
+            <td class="head">セラー保護</td>
+            <td><strong>あり（最大の強み・下で説明）</strong></td>
+            <td>なし</td>
+          </tr>
+          <tr>
+            <td class="head">関税</td>
+            <td>一律で請求される</td>
+            <td>免除で送れる（ステップ5で説明）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>CPaSSエコノミー最大の強み「セラープロテクション」</h3>
+    <p>CPaSSエコノミーで送ると、<strong>荷物が届かないトラブルが起きても、セラーのアカウントが守られます。</strong></p>
+    <div class="ok">
+      <span class="t">守られる内容</span>
+      <ul>
+        <li>商品未着（Item not received）でついたディフェクト（アカウントのキズ）は自動で削除</li>
+        <li>配送遅延（Late shipment rate）も評価の対象外</li>
+        <li>未着についたネガティブ・ニュートラル評価も自動で削除</li>
+      </ul>
+    </div>
+    <p style="font-size:16.5px;">条件は3つ：<strong>①日本国内から発送</strong>、<strong>②ハンドリングタイム内に発送</strong>、<strong>③SpeedPAKの追跡番号（EX・EM・EEで始まる番号）をアップロード</strong>。この3つを守っていれば適用されます。</p>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step">
+    <span class="step-no">ステップ 4</span>
+    <h2>シッピングポリシー＝バイヤーとの「お届け日数の約束」</h2>
+    <p>シッピングポリシーとは、出品するときに設定する<strong>「この商品は、この方法で、この日数で届けます」という約束</strong>のことです。エコノミーの約束は2種類あります。</p>
+    <div class="yakusoku">
+      <div class="yaku">
+        <div class="head">約束①　eBay SpeedPAK Economy</div>
+        「8〜12営業日で届けます」という約束
+      </div>
+      <div class="yaku">
+        <div class="head">約束②　Economy Shipping from outside US</div>
+        「11〜23営業日で届けます」という約束
+      </div>
+    </div>
+    <div class="rule">約束より遅く届く発送はダメ。<br>速く届く分にはOK。</div>
+    <ul>
+      <li><strong>約束①（8〜12日）で出品した場合</strong> → エアパケットだと約束より遅れるおそれがある。だから <strong>CPaSSエコノミーでしか発送してはいけない。</strong></li>
+      <li><strong>約束②（11〜23日）で出品した場合</strong> → 余裕のある約束なので、<strong>エアパケットでもCPaSSエコノミーでもOK。</strong>CPaSSエコノミーで送れば約束より早く届いて、バイヤーは喜ぶだけ。</li>
+    </ul>
+    <div class="kotae">発送方法を選ぶ前に、まず「自分がどっちの約束で出品したか」を確認しましょう。</div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="step">
+    <span class="step-no">ステップ 5</span>
+    <h2>関税のはなし（アメリカ向け）</h2>
+    <p>関税がどうなるかは、<strong>「①何を送るか」×「②どう送るか」の掛け算</strong>で決まります。</p>
+
+    <h3>① 何を送るか（商品による免除）</h3>
+    <p>CD・本・トレーディングカード（ディズニーのロルカナなどコレクター系カード）は、<strong>もともと関税が免除される品目</strong>です。</p>
+
+    <h3>② どう送るか（発送方法による違い）</h3>
+    <ul>
+      <li><strong>CPaSSエコノミーで送る</strong> → 免除品目でも<strong>一律で関税が請求される。</strong></li>
+      <li><strong>国際エアパケット（郵便）で送る</strong> → <strong>関税免除</strong>になる。</li>
+    </ul>
+
+    <h3>郵便で送るときのルール ── ゾノス（Zonos）</h3>
+    <ul>
+      <li>郵便で送る場合、原則として、関税を代わりに集めるアプリ<strong>「ゾノス」の利用が必須</strong>です。</li>
+      <li>関税免除の商品でも、ゾノスは<strong>1件あたり約570円の手数料</strong>を取ります。その分は送料などに上乗せして回収する必要があります。</li>
+      <li>ゾノスの<strong>DDP発送</strong>（関税を先に支払い済みにして送る方法）に対応しているのは、<strong>各都道府県の比較的大きな郵便局だけ</strong>。小さな郵便局では使えません。</li>
+      <li>DDPで送りたい場合は、<strong>「大きな郵便局への持ち込み」＋「ゾノスで関税の事前支払い」</strong>がセットで必要です。</li>
+    </ul>
+
+    <h3>「贈り物（Gift）」扱いという運用</h3>
+    <ul>
+      <li>国際エアパケットには<strong>「100ドル以下の贈り物なら関税免除」</strong>のルールがあります。</li>
+      <li>もともと免除品目（本・CD・トレカなど）で100ドル以下なら、贈り物としてラベルを発行することで、<strong>ゾノスを通さずに発送できます。</strong></li>
+      <li>街の小さな郵便局から送る方法は、現状これしかありません。</li>
+    </ul>
+    <div class="note">
+      <span class="t">ここは正直に：グレーな部分です</span><br>
+      売った商品は、本来は「販売品（Merchandise）」と申告するのが正しい可能性があります。「贈り物」扱いはおすすめの裏ワザではなく、<strong>「現状こう運用されていて、これでも大丈夫そうだ」という位置づけ</strong>です。グレーであることは知った上で選んでください。
+    </div>
+  </section>
+
+  <!-- STEP 6 -->
+  <section class="step">
+    <span class="step-no">ステップ 6</span>
+    <h2>ラベル発行の3つの方法と、共通の注意点</h2>
+    <p>国際エアパケットのラベル（宛名紙）は、次の3つの方法で発行できます。</p>
+    <ul>
+      <li><strong>国際郵便マイページ</strong>（日本郵便の公式サイト）</li>
+      <li><strong>Ship&amp;Co（シップアンドコー）</strong></li>
+      <li><strong>ヒロゲテ</strong></li>
+    </ul>
+    <p>Ship&amp;Coとヒロゲテは、eBayと連携してラベルを簡単に作れる<strong>「ラベル発行ツール」</strong>です。発送ツールそのものではありません。</p>
+    <div class="note">
+      <span class="t">共通の注意</span><br>
+      どの方法で発行する場合も、内容品の種別を<strong>「贈り物（Gift）」にしないと、この方法（ゾノスを通さず小さな郵便局から送る）は使えません。</strong>そして、街の小さな郵便局から送るには、現状この方法しかありません。
+    </div>
+  </section>
+
+  <!-- STEP 7 -->
+  <section class="step">
+    <span class="step-no">ステップ 7</span>
+    <h2>ツールの役割まとめ（ごちゃまぜ解消コーナー）</h2>
+    <p>「運ぶサービス」「ラベルを作る道具」「関税を払う道具」は、ぜんぶ別物です。ここを混同すると話が分からなくなります。</p>
+    <div class="tablebox">
+      <table>
+        <thead>
+          <tr><th>名前</th><th>役割</th><th>ひとこと</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="head">国際エアパケット</td>
+            <td>日本郵便の「配送サービス」</td>
+            <td>荷物を運ぶ人</td>
+          </tr>
+          <tr>
+            <td class="head">Ship&amp;Co／ヒロゲテ</td>
+            <td>「ラベル発行ツール」</td>
+            <td>宛名ラベルを作る道具。ラベル自体は国際郵便マイページでも作れる</td>
+          </tr>
+          <tr>
+            <td class="head">ゾノス（Zonos）</td>
+            <td>「関税支払いツール」</td>
+            <td>関税を代わりに集める道具</td>
+          </tr>
+          <tr>
+            <td class="head">CPaSS（シーパス）</td>
+            <td>eBay公式の「発送ツール」</td>
+            <td>ラベルも配送手配もまとめてやってくれる</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STEP 8 -->
+  <section class="step">
+    <span class="step-no">ステップ 8</span>
+    <h2>まとめ：結局どうすればいい？</h2>
+    <ul>
+      <li><strong>まずシッピングポリシー（約束）を確認。</strong>SpeedPAK Economy（8〜12日）の約束なら、CPaSSエコノミー一択。</li>
+      <li><strong>未着トラブルからアカウントを守りたい</strong> → CPaSSエコノミー（セラープロテクションが効く）。</li>
+      <li><strong>関税免除品目（本・CD・トレカ）で100ドル以下</strong> → 郵便＋贈り物ラベルで、小さな郵便局からでも送れる（グレーは承知の上で）。</li>
+      <li><strong>DDP（関税支払い済み）で確実に送りたい</strong> → 大きな郵便局への持ち込み＋ゾノスで事前支払い。</li>
+    </ul>
+  </section>
+
+  <footer>
+    ※日数・料金・保護内容などの数字は2026年9月時点の情報です。eBay・日本郵便の公式発表により変わることがあります。<br>
+    出典：eBay Japan公式（SpeedPAK案内・CPaSS FAQ）、日本郵便公式（国際エアパケット案内）、eBayセラーハブの実画面
+  </footer>
+</div>
+</body>
+</html>
